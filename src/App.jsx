@@ -1,3 +1,4 @@
+import Home from "./components/Home"
 
 
 function App() {
@@ -5,7 +6,7 @@ function App() {
   return (
     <>
       <div>
-        <h1 className='text-red-700'>Hello</h1>
+        <Home/>
        </div>
     </>
   )
