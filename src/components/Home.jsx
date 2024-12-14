@@ -29,20 +29,20 @@ const Home = ({placeholder}) => {
           </div>
 
           <div
-            className="relative flex flex-col items-center md:w-[900px] md:h-[600px] w-[300px] h-[500px]
-         bg-slate-900/50 rounded-2xl shadow-md shadow-slate-500"
+            className="relative flex flex-col items-center md:w-[900px] md:h-[600px] 
+         md:bg-slate-900/50 md:rounded-2xl shadow-md md:shadow-slate-500"
           >
 
             {/* input field */}
-            <div className="relative md:w-[90%] flex flex-col  items-center my-2">
-            <IoMdAdd className="absolute text-gray-400 md:left-11 top-[38%]  text-xl " />
+            <div className="relative top-[520px] md:top-0  md:w-[90%] flex flex-col  items-center my-2">
+            <IoMdAdd className="absolute left-6 text-gray-400 md:left-11 top-[38%]  text-xl " />
                 <input className="outline-none border border-gray-600 my-4
                  bg-white text-black md:px-6 px-10 py-2 rounded-md
                  w-[90%] " type="text" placeholder={placeholder}  /> 
             </div>
 
             {/* navigate buttons */}
-            <div className="">
+            <div className="md:block hidden">
                 <NavigateButton/>
             </div>
 

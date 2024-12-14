@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <div>
-        <Home placeholder='Add Task' />
+        <Home placeholder='Add a task' />
        </div>
     </>
   )
