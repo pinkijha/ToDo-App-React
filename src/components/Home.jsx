@@ -29,7 +29,7 @@ const Home = ({placeholder}) => {
           </div>
 
           <div
-            className="relative flex flex-col items-center md:w-[900px] md:h-[580px] w-[300px] h-[500px]
+            className="relative flex flex-col items-center md:w-[900px] md:h-[600px] w-[300px] h-[500px]
          bg-slate-900/50 rounded-2xl shadow-md shadow-slate-500"
           >
 

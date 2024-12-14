@@ -2,9 +2,9 @@ import React from 'react'
 
 const NavigateButton = () => {
   return (
-    <div className='flex justify-between md:text-sm text-xs  gap-1'>
-      <div className='flex'>
-      <button className="border border-slate-300 px-3 py-1 shadow-md bg-blue-200  rounded-xl">
+    <div className='flex  justify-between md:text-sm text-xs gap-1 '>
+      <div className=' '>
+      <button className="border  border-slate-300 px-3 py-1 shadow-md bg-blue-200  rounded-xl">
                     New Task
                 </button>
                 <button className="border border-slate-300 px-3 py-1 shadow-md bg-green-200  rounded-xl">
@@ -20,7 +20,7 @@ const NavigateButton = () => {
                 </button>
       </div>
 
-      <div>
+      <div className=''>
       <button className="border border-slate-300 px-3 py-1 shadow-md bg-purple-200  rounded-xl">
                     View All
                 </button>
