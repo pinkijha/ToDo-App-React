@@ -4,6 +4,7 @@ import { IoMdAdd } from "react-icons/io";
 import NavigateButton from "./HeaderBtn/NavigateButton";
 import TaskContainer from "./TaskContainer";
 import FooterButton from "./FooterBtn/FooterButton";
+import Navbar from "./Navbar";
 
 
 const Home = ({placeholder}) => {
@@ -19,15 +20,17 @@ const Home = ({placeholder}) => {
         <div className="absolute inset-0 bg-black/60 "></div>
       </div>
 
-      <div className="relative flex flex-col items-center">
-
-        {/* Heading */}
-        <div className="">
-          <h1 className="font-bold text-2xl md:text-4xl m-6 text-white ">
+       {/* Heading */}
+       <div className="absolute left-2 space-x-2 flex z-20 justify-between">
+           <div className="md:hidden"> <Navbar className='' /></div>
+          <div>
+          <h1 className="font-bold text-2xl md:text-4xl mt-6   text-white ">
             Todo App
-          </h1>          
+          </h1>
+            </div>          
           </div>
 
+      <div className="relative flex flex-col items-center">    
           <div
             className="relative flex flex-col items-center md:w-[900px] md:h-[600px] 
          md:bg-slate-900/50 md:rounded-2xl shadow-md md:shadow-slate-500"
@@ -35,10 +38,10 @@ const Home = ({placeholder}) => {
 
             {/* input field */}
             <div className="relative top-[520px] md:top-0  md:w-[90%] flex flex-col  items-center my-2">
-            <IoMdAdd className="absolute left-6 text-gray-400 md:left-11 top-[38%]  text-xl " />
+            <IoMdAdd className="absolute left-4 text-gray-400 md:left-11 top-[38%]  text-xl " />
                 <input className="outline-none border border-gray-600 my-4
                  bg-white text-black md:px-6 px-10 py-2 rounded-md
-                 w-[90%] " type="text" placeholder={placeholder}  /> 
+                 md:w-[90%] w-[320px] " type="text" placeholder={placeholder}  /> 
             </div>
 
             {/* navigate buttons */}
