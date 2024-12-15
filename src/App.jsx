@@ -1,14 +1,16 @@
 import Home from "./components/Home"
-import Navbar from "./components/Navbar"
-
+import {Provider} from "react-redux";
+import store  from "./utils/Store";
 
 function App() {
 
   return (
     <>
+    <Provider store={store}>
       <div>
         <Home placeholder='Add a task'  />
        </div>
+       </Provider>
     </>
   )
 }
