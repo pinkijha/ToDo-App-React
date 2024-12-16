@@ -25,7 +25,8 @@ const Home = ({placeholder}) => {
       </div>
 
        {/* Heading Mobile Screen */}
-       <div className="md:hidden absolute left-2 space-x-2 flex z-20 justify-between">
+       <div className={`md:hidden absolute ${isMenuOpen ? '' : 'left-2 space-x-2 justify-between' }   flex z-20 `}
+       >
            <button className="md:hidden"> <Navbar className='' /></button>
           <div>
             </div> 
@@ -66,7 +67,7 @@ const Home = ({placeholder}) => {
 
                 {/* task container */}
             <div className="">
-                {/* <TaskContainer/> */}
+                <TaskContainer/>
             </div>
             
             {/* Below buttons */}

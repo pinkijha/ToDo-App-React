@@ -16,7 +16,7 @@ const Navbar = () => {
   
 
   return (
-    <div className='text-white  mt-7  text-2xl'>
+    <div className={`${isMenuOpen ? 'bg-white text-black h-screen px-2 py-7' : 'text-white mt-7' } text-2xl`}>
       <button onClick={() => toggleMenuHandler()}> <TiThMenu  />
       {isMenuOpen ? <Sidebar/> : '' }</button>
       
