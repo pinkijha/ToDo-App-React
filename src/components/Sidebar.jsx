@@ -1,38 +1,9 @@
 import React from 'react'
-import { IoSunnyOutline } from "react-icons/io5";
-import { CiStar } from "react-icons/ci";
-import { FaRegUser } from "react-icons/fa";
-import { CiHome } from "react-icons/ci";
-import { PiInfinityLight } from "react-icons/pi";
+import { sidebarItem } from '../utils/constant';
+
 
 const Sidebar = () => {
-    const sidebarItem = [
-        {
-          id: 1,
-          name: 'My Day',
-          icon: <IoSunnyOutline />,
-
-        },{
-          id: 2,
-          name: 'Important',
-          icon: <CiStar />,
-          
-        },{
-          id: 3,
-          name: 'All',
-          icon: <PiInfinityLight />,
-        },
-        {
-          id: 4,
-          name: 'Asigned to me',
-          icon: <FaRegUser />,
-        },
-        {
-          id: 5,
-          name: 'Task',
-          icon: <CiHome />,
-        },
-      ]
+   
 
   return (
     <div>

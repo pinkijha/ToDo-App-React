@@ -1,35 +1,25 @@
-import React from 'react'
+import React from "react";
+import { btnList, sidebarItem } from "../../utils/constant";
 
 const NavigateButton = () => {
+
+const renderButton = ({id, name,color}) => (
+  <>
+        <button key={id} className={`${btnStyle} ${color}`}>
+          {name}
+        </button>
+        </>
+)
+ 
+
+  const btnStyle = "border border-slate-300 px-3 py-1 shadow-md  rounded-xl";
+
   return (
-    <div className='flex  justify-between md:text-sm text-xs gap-1 '>
-      <div className=' '>
-      <button className="border  border-slate-300 px-3 py-1 shadow-md bg-blue-200  rounded-xl">
-                    New Task
-                </button>
-                <button className="border border-slate-300 px-3 py-1 shadow-md bg-green-200  rounded-xl">
-                    Completed
-                </button>
-                
-                <button className="border border-slate-300 px-3 py-1 shadow-md bg-gray-200  rounded-xl">
-                    Pending
-                </button>
-                
-                <button className="border border-slate-300 px-3 py-1 shadow-md bg-orange-200  rounded-xl">
-                    Important
-                </button>
-      </div>
-
-      <div className=''>
-      <button className="border border-slate-300 px-3 py-1 shadow-md bg-purple-200  rounded-xl">
-                    View All
-                </button>
-                <button className="border border-slate-300 px-3 py-1 shadow-md bg-red-200  rounded-xl">
-                    Clear All
-                </button>
-      </div>
+    <div className="flex  justify-between md:text-sm text-xs gap-2 ">
+      {sidebarItem.map(renderButton)}
+      {btnList.map(renderButton)}
     </div>
-  )
-}
+  );
+};
 
-export default NavigateButton
+export default NavigateButton;
