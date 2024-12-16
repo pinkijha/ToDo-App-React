@@ -5,9 +5,13 @@ import NavigateButton from "./HeaderBtn/NavigateButton";
 import TaskContainer from "./TaskContainer";
 import FooterButton from "./FooterBtn/FooterButton";
 import Navbar from "./Navbar";
+import { useSelector } from "react-redux";
 
 
 const Home = ({placeholder}) => {
+  
+  const isMenuOpen = useSelector((store)=> store.app.isMenuOpen);
+ 
   return (
     <div className="relative">
 
@@ -24,10 +28,10 @@ const Home = ({placeholder}) => {
        <div className="md:hidden absolute left-2 space-x-2 flex z-20 justify-between">
            <button className="md:hidden"> <Navbar className='' /></button>
           <div>
-          <h1 className="font-bold text-2xl md:text-4xl mt-6   text-white ">
+            </div> 
+          {isMenuOpen ? '' : <h1 className="font-bold text-2xl md:text-4xl mt-6   text-white ">
             Todo App
-          </h1>
-            </div>          
+          </h1>}         
           </div>
 
       <div className="relative flex flex-col items-center">
@@ -48,10 +52,10 @@ const Home = ({placeholder}) => {
           >
 
             {/* input field */}
-            <div className="relative top-[580px] md:top-0  md:w-[90%] flex flex-col  items-center my-2">
+            <div className="relative top-[580px] md:top-0 md:text-xl text-sm md:w-[90%] flex flex-col  items-center my-2">
             <IoMdAdd className="absolute left-4 text-gray-400 md:left-11 top-[38%]  text-xl " />
                 <input className="outline-none border border-gray-600 my-4
-                 bg-white text-black md:px-6 px-10 py-2 rounded-md
+                 bg-white text-black md:px-6 px-10 py-2 rounded-xl
                  md:w-[90%] w-[320px] " type="text" placeholder={placeholder}  /> 
             </div>
 
@@ -62,7 +66,7 @@ const Home = ({placeholder}) => {
 
                 {/* task container */}
             <div className="">
-                <TaskContainer/>
+                {/* <TaskContainer/> */}
             </div>
             
             {/* Below buttons */}
