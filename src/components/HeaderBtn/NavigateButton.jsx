@@ -1,14 +1,15 @@
 import React from "react";
 import { btnList, sidebarItem } from "../../utils/constant";
+import { NavLink } from "react-router-dom";
 
 const NavigateButton = () => {
 
-const renderButton = ({id, name,color}) => (
-  <>
-        <button key={id} className={`${btnStyle} ${color}`}>
+const renderButton = ({id, name, color, path}) => (
+ 
+        <NavLink to={path} key={id} className={`${btnStyle} ${color}`}>
           {name}
-        </button>
-        </>
+        </NavLink>
+      
 )
  
 
