@@ -1,5 +1,5 @@
 import React from "react";
-import { btnList, sidebarItem } from "../../utils/constant";
+import { sidebarItem } from "../../utils/constant";
 import { NavLink } from "react-router-dom";
 
 const NavigateButton = () => {
@@ -18,7 +18,7 @@ const renderButton = ({id, name, color, path}) => (
   return (
     <div className="flex  justify-between md:text-sm text-xs gap-2 ">
       {sidebarItem.map(renderButton)}
-      {btnList.map(renderButton)}
+      <button className={`${btnStyle} bg-red-200`}>Clear all</button>
     </div>
   );
 };
