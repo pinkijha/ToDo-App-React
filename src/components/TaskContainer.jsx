@@ -5,10 +5,10 @@ import { CiStar } from "react-icons/ci";
 import { useUtils } from '../utils/UtilsContext';
 
 const TaskContainer = () => {
-    const {task } = useUtils();
+    const {task, setTask } = useUtils();
 
-    const handleDelete = (index) => {
-        setTask((prevTask) => prevTask.filter((t) => t.index !== index));
+    const handleDelete = (indexDelete) => {
+        setTask((prevTask) => prevTask.filter((taskName) => taskName !== indexDelete));
       };
  
   return (
@@ -25,7 +25,7 @@ const TaskContainer = () => {
                            <div className='absolute space-x-2  right-1 flex items-center'>
                            <CiStar className='text-orange-600 cursor-pointer'  />
                             <MdModeEditOutline className='text-blue-600 cursor-pointer'  />
-                            <MdDelete onClick={() => handleDelete(index)}
+                            <MdDelete onClick={() => handleDelete(taskName)}
                             className='text-red-600 cursor-pointer' />
                            </div>
 
