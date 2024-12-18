@@ -4,7 +4,6 @@ import NavigateButton from "./HeaderBtn/NavigateButton";
 import Navbar from "./Navbar";
 import InputField from "./InputField";
 import { useSelector } from "react-redux";
-import Body from "./Body";
 import { Outlet } from "react-router-dom";
 
 const Home = () => {

@@ -7,6 +7,7 @@ import Completed from "./components/Completed";
 import Pending from "./components/Pending";
 import All from './components/All'
 import TaskContainer from "./components/TaskContainer";
+import { UtilsContextProvider } from "./utils/UtilsContext";
 
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
   return (
     <>
     <BrowserRouter>
-    <Provider store={store}>
+   <UtilsContextProvider>
+   <Provider store={store}>
       <Routes>
       {/* Parent Route */}
       <Route path="/" element={<Home />}>
@@ -28,6 +30,7 @@ function App() {
       </Route>
     </Routes>
        </Provider>
+   </UtilsContextProvider>
        </BrowserRouter>
     </>
   )
