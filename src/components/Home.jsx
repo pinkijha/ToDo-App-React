@@ -1,11 +1,11 @@
 import React from "react";
 import bgImg from "/bgImg.jpg";
 import NavigateButton from "./HeaderBtn/NavigateButton";
-import TaskContainer from "./TaskContainer";
 import Navbar from "./Navbar";
 import InputField from "./InputField";
-import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Body from "./Body";
+import { Outlet } from "react-router-dom";
 
 const Home = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
@@ -56,8 +56,8 @@ const Home = () => {
           </div>
 
           {/* Dynamic Task Container */}
-          <div className="task-container">
-            <Outlet /> {/* Dynamic routing happens here */}
+          <div className="">
+            <Outlet/> {/* Dynamic routing happens here */}
           </div>
         </div>
       </div>

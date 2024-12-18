@@ -15,7 +15,6 @@ function App() {
     <>
     <BrowserRouter>
     <Provider store={store}>
-      <div>
       <Routes>
       {/* Parent Route */}
       <Route path="/" element={<Home />}>
@@ -28,7 +27,6 @@ function App() {
         <Route path="pending" element={<Pending />} />
       </Route>
     </Routes>
-       </div>
        </Provider>
        </BrowserRouter>
     </>
