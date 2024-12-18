@@ -1,15 +1,14 @@
 import React from "react";
 import bgImg from "/bgImg.jpg";
-import { IoMdAdd } from "react-icons/io";
 import NavigateButton from "./HeaderBtn/NavigateButton";
 import TaskContainer from "./TaskContainer";
 import Navbar from "./Navbar";
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import MyDay from "./MyDay";
 import All from "./All";
+import InputField from "./InputField";
 
-const Home = ({ placeholder }) => {
+const Home = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   return (
@@ -48,7 +47,7 @@ const Home = ({ placeholder }) => {
         <div className="hidden md:flex justify-between">
           <div className="md:hidden">
             {" "}
-            <Navbar className="" />
+            <Navbar  />
           </div>
           <div>
             <h1 className="font-bold text-2xl md:text-4xl m-6 text-white ">
@@ -62,17 +61,9 @@ const Home = ({ placeholder }) => {
          md:bg-slate-900/50 md:rounded-2xl shadow-md md:shadow-slate-500"
         >
           {/* input field */}
-          <div className="relative top-[580px] md:top-0 md:text-xl text-sm md:w-[90%] flex flex-col  items-center my-2">
-            <IoMdAdd className="absolute left-4 text-gray-400 md:left-11 top-[38%]  text-xl " />
-            <input
-              className="outline-none border border-gray-600 my-4
-                 bg-white text-black md:px-6 px-10 py-2 rounded-xl
-                 md:w-[90%] w-[320px] "
-              type="text"
-              placeholder={placeholder}
-            />
+          <div className="relative">
+            <InputField/>
           </div>
-
           {/* navigate buttons */}
           <div className="md:block hidden">
             <NavigateButton />
@@ -82,13 +73,12 @@ const Home = ({ placeholder }) => {
           <div className="">
             <TaskContainer />
           </div>
+          
         </div>
       </div>
       
-
+        {/* routing  */}
           <Routes>
-            <Route path="/" element={<MyDay />} />
-            <Route path='/myday' element={<MyDay />} />
             <Route path='/all' element={<All />} />
           </Routes>
     </div>

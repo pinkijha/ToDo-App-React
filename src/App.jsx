@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
     <Provider store={store}>
       <div>
-        <Home placeholder='Add a task'  />
+        <Home  />
        </div>
        </Provider>
        </BrowserRouter>
