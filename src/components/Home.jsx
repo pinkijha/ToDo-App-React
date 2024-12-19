@@ -1,13 +1,11 @@
 import React from "react";
 import bgImg from "/bgImg.jpg";
 import NavigateButton from "./HeaderBtn/NavigateButton";
-import Navbar from "./Navbar";
 import InputField from "./InputField";
-import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
+import Heading from "./HeaderBtn/Heading";
 
 const Home = () => {
-  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   return (
     <div className="relative">
@@ -21,18 +19,7 @@ const Home = () => {
       </div>
 
       {/* Heading Mobile Screen */}
-      <div
-        className={`md:hidden absolute ${
-          isMenuOpen ? "" : "left-2 space-x-2 justify-between"
-        } flex z-20`}
-      >
-        <Navbar />
-        {isMenuOpen ? null : (
-          <h1 className="font-bold text-2xl md:text-4xl mt-6 text-white">
-            Todo App
-          </h1>
-        )}
-      </div>
+      <Heading/>
 
       {/* Main Content */}
       <div className="relative flex flex-col items-center">
@@ -44,8 +31,10 @@ const Home = () => {
         </div>
 
         {/* Content Container */}
-        <div className="relative flex flex-col items-center md:w-[900px] md:h-[600px] 
-          md:bg-slate-900/50 md:rounded-2xl shadow-md md:shadow-slate-500">
+        <div
+          className="relative flex flex-col items-center md:w-[900px] md:h-[600px] 
+          md:bg-slate-900/50 md:rounded-2xl shadow-md md:shadow-slate-500"
+        >
           {/* Input Field */}
           <InputField />
 
@@ -56,7 +45,7 @@ const Home = () => {
 
           {/* Dynamic Task Container */}
           <div className="">
-            <Outlet/> {/* Dynamic routing happens here */}
+            <Outlet /> {/* Dynamic routing happens here */}
           </div>
         </div>
       </div>
