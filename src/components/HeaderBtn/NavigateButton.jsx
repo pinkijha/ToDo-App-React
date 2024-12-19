@@ -16,7 +16,7 @@ const NavigateButton = () => {
   const handleClearAll = () => {
     const currentPath = location.pathname;
 
-    if (currentPath === "/tasks") {
+    if (currentPath === "/myday") {
       setTask([]); // Clear tasks only
     } else if (currentPath === "/important") {
       setImportantTask([]); // Clear important tasks only
