@@ -1,5 +1,7 @@
 import React from 'react'
-import { useUtils } from '../utils/UtilsContext'
+import { useUtils } from '../utils/UtilsContext';
+import { CiStar } from "react-icons/ci";
+import { FaStar } from "react-icons/fa6";
 
 const Important = () => {
   const { importantTask } = useUtils();
@@ -16,6 +18,15 @@ const Important = () => {
                          md:w-full rounded-md border-spacing-8 border-gray-500"
         >
           <p className="cursor-pointer text-sm ">{content}</p>
+          <div className="absolute space-x-2 right-2 flex items-center">
+                      <div onClick={() => handleImportant(id)} className="cursor-pointer">
+                        {important ? (
+                          <FaStar className="text-orange-600" />
+                        ) : (
+                          <CiStar className="text-orange-600" />
+                        )}
+                      </div>
+                      </div>
         </div>
       ))}
     </div>

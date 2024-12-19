@@ -1,19 +1,28 @@
 import React, { useContext } from "react";
 import { sidebarItem } from "../../utils/constant";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useUtils } from "../../utils/UtilsContext";
 
 const NavigateButton = () => {
-  const { setTask } = useUtils();
+  const { setTask, setImportantTask, setCompletedTasks } = useUtils();
+  const location = useLocation(); // Get the current route
 
   const renderButton = ({ id, name, color, path }) => (
-    <NavLink to={path} key={id} className={`${btnStyle} ${color}`}> 
+    <NavLink to={path} key={id} className={`${btnStyle} ${color}`}>
       {name}
     </NavLink>
   );
 
   const handleClearAll = () => {
-    setTask([]);
+    const currentPath = location.pathname;
+
+    if (currentPath === "/tasks") {
+      setTask([]); // Clear tasks only
+    } else if (currentPath === "/important") {
+      setImportantTask([]); // Clear important tasks only
+    } else if (currentPath === "/completed") {
+      setCompletedTasks([]); // Clear completed tasks only
+    }
   };
 
   // Css for buttons

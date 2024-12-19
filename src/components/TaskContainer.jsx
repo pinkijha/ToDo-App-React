@@ -1,8 +1,8 @@
 import React from "react";
 import { MdDelete } from "react-icons/md";
 import { MdModeEditOutline } from "react-icons/md";
-import { CiStar } from "react-icons/ci";
 import { useUtils } from "../utils/UtilsContext";
+import { CiStar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa6";
 
 const TaskContainer = () => {
@@ -12,27 +12,28 @@ const TaskContainer = () => {
     setTask((prevTask) => prevTask.filter((t) => t.id !== id));
   };
 
-  // Important task handler function
   const handleImportant = (id) => {
     setTask((prevTask) =>
-      prevTask.map((t) =>
-        t.id === id ? { ...t, important: true } : t
-      ));
+      prevTask.map((t) => {
+        if (t.id === id) {
+          const updatedTask = { ...t, important: !t.important };
+          if (!t.important) {
+            setImportantTask((prevImportant) => [...prevImportant, updatedTask]);
+          } else {
+            setImportantTask((prevImportant) =>
+              prevImportant.filter((impTask) => impTask.id !== id)
+            );
+          }
+          return updatedTask;
+        }
+        return t;
+      })
+    );
+  };
 
-      const importantTask = task.find((t) => t.id === id);
-      if(importantTask){
-        setImportantTask((previmp) => [...previmp, importantTask]);
-        setTask((prevTask) => prevTask.filter((t) => t.id === id));
-      }
-
-  }
-
-  // Completed Task handler function
   const handleComplete = (id) => {
     setTask((prevTask) =>
-      prevTask.map((t) =>
-        t.id === id ? { ...t, completed: true } : t
-      )
+      prevTask.map((t) => (t.id === id ? { ...t, completed: true } : t))
     );
 
     setTimeout(() => {
@@ -60,13 +61,17 @@ const TaskContainer = () => {
           <input
             type="radio"
             onClick={() => handleComplete(id)}
-            disabled={completed} // Disable if already completed
+            disabled={completed}
           />
           <p className="cursor-pointer text-sm">{content}</p>
           <div className="absolute space-x-2 right-1 flex items-center">
-            <CiStar onClick={() => handleImportant(id)}
-            className={`text-orange-600 cursor-pointer 
-                         ${important ? <FaStar className="text-orange-600" /> : ''}`} />
+            <div onClick={() => handleImportant(id)} className="cursor-pointer">
+              {important ? (
+                <FaStar className="text-orange-400" />
+              ) : (
+                <CiStar className="text-orange-600" />
+              )}
+            </div>
             <MdModeEditOutline className="text-blue-600 cursor-pointer" />
             <MdDelete
               onClick={() => handleDelete(id)}
