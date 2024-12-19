@@ -13,18 +13,25 @@ const InputField = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
+    // Create a task object with id, content, and completed
+    const newTask = {
+      id: Date.now(), // Unique ID based on timestamp
+      content: inputValue, // Content from the input field
+      completed: false, // Initially, the task is not completed
+    };
+
     if (!inputValue) return alert("Task cannot be empty!"); //nul input value
 
-    // Duplicate value
-    if (task.includes(inputValue)) {
-      setInputValue(""); // input field empty after entering one value
+    // Check for duplicate content
+    const isDuplicate = task.some((t) => t.content === inputValue);
+    if (isDuplicate) {
       alert("Task already exists!");
+      setInputValue(""); // Clear the input field
       return;
     }
 
-    setTask((prevTask) => [...prevTask, inputValue]);
-
-    setInputValue(""); // input field empty after entering one value
+    setTask((prevTask) => [...prevTask, newTask]); // Add the task to the task array
+    setInputValue(""); // Clear the input field
   };
   return (
     <form onSubmit={handleFormSubmit}>

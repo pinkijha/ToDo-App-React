@@ -5,32 +5,52 @@ import { CiStar } from "react-icons/ci";
 import { useUtils } from "../utils/UtilsContext";
 
 const TaskContainer = () => {
-  const { task, setTask } = useUtils();
+  const { task, setTask, completedTasks, setCompletedTasks } = useUtils();
 
-  const handleDelete = (indexDelete) => {
+  const handleDelete = (id) => {
+    setTask((prevTask) => prevTask.filter((t) => t.id !== id));
+  };
+
+  const handleComplete = (id) => {
     setTask((prevTask) =>
-      prevTask.filter((taskName) => taskName !== indexDelete)
+      prevTask.map((t) =>
+        t.id === id ? { ...t, completed: true } : t
+      )
     );
+
+    setTimeout(() => {
+      const completedTask = task.find((t) => t.id === id);
+      if (completedTask) {
+        setCompletedTasks((prevCompleted) => [...prevCompleted, completedTask]);
+        setTask((prevTask) => prevTask.filter((t) => t.id !== id));
+      }
+    }, 2000);
   };
 
   return (
     <div
-      className=" flex flex-col px-4 overflow-y-scroll  md:my-4 p-4 space-y-2 md:w-[700px] w-[350px] h-[440px] md:h-[400px]
+      className="flex flex-col px-4 overflow-y-scroll md:my-4 p-4 space-y-2 md:w-[700px] w-[350px] h-[440px] md:h-[400px]
                  md:bg-slate-300 md:shadow-sm scrollbar-hide md:shadow-blue-200 md:rounded-xl"
     >
-      {task.map((taskName, index) => (
+      {task.map(({ id, content, completed }) => (
         <div
-          key={index}
-          className="relative md:text-lg text-sm flex p-2 space-x-1 bg-slate-100
-                         md:w-full rounded-md  border-spacing-8 border-gray-500"
+          key={id}
+          className={`relative md:text-lg text-sm flex p-2 space-x-1 bg-slate-100
+                         md:w-full rounded-md border-spacing-8 border-gray-500 ${
+                           completed ? "line-through text-gray-500" : ""
+                         }`}
         >
-          <input type="radio" />
-          <p className="cursor-pointer text-sm">{taskName}</p>
-          <div className="absolute space-x-2  right-1 flex items-center">
+          <input
+            type="radio"
+            onClick={() => handleComplete(id)}
+            disabled={completed} // Disable if already completed
+          />
+          <p className="cursor-pointer text-sm">{content}</p>
+          <div className="absolute space-x-2 right-1 flex items-center">
             <CiStar className="text-orange-600 cursor-pointer" />
             <MdModeEditOutline className="text-blue-600 cursor-pointer" />
             <MdDelete
-              onClick={() => handleDelete(taskName)}
+              onClick={() => handleDelete(id)}
               className="text-red-600 cursor-pointer"
             />
           </div>
