@@ -31,7 +31,7 @@ const TaskContainer = () => {
 
   return (
     <div
-      className="flex flex-col px-4 overflow-y-scroll md:my-4 p-4 space-y-2 md:w-[700px] w-[350px] h-[440px] md:h-[400px]
+      className="flex flex-col px-4 overflow-y-scroll  md:my-4 p-4 space-y-2 md:w-[700px] w-[350px] h-[440px] md:h-[400px]
                  md:bg-slate-300 bg-slate-200 md:shadow-sm scrollbar-hide md:shadow-blue-200 md:rounded-xl rounded-lg"
     >
       {task.map(({ id, content, important, completed }) => (

@@ -21,7 +21,7 @@ function App() {
                 {/* Child Routes */}
                 <Route index element={<All />} /> {/* Default Route */}
                 <Route path="myday" element={<TaskContainer />} />
-                <Route path="all" element={<All />} />
+                <Route path="all" element={<TaskContainer />} />
                 <Route path="important" element={<Important />} />
                 <Route path="completed" element={<Completed />} />
                 <Route path="pending" element={<Pending />} />
