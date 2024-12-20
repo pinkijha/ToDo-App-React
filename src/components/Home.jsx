@@ -10,9 +10,9 @@ const Home = () => {
   return (
     <div className="relative">
       {/* Background Image */}
-      <div className="absolute">
+      <div className="absolute ">
         <img
-          className="h-screen w-screen object-cover md:max-h-screen"
+          className="md:h-screen md:w-screen md:block hidden md:object-cover md:max-h-screen"
           src={bgImg}
         />
         <div className="absolute inset-0 bg-black/60"></div>

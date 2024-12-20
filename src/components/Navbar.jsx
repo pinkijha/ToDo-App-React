@@ -26,7 +26,7 @@ const Navbar = () => {
         <button
           onClick={() => toggleMenuHandler()}
           className={`${
-            isMenuOpen ? "text-black" : "text-white"
+            isMenuOpen ? "text-black" : "text-black"
           } focus:outline-none z-30 relative`} // Hamburger turns black when menu is open
         >
           <TiThMenu />

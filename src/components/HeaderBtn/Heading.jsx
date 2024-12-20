@@ -16,7 +16,7 @@ const Heading = () => {
       >
         <Navbar />
         {isMenuOpen ? null : (
-          <h1 className="font-bold text-2xl md:text-4xl mt-6 text-white">
+          <h1 className="font-bold text-2xl md:text-4xl mt-6 text-black">
             Todo App
           </h1>
         )}
