@@ -19,7 +19,7 @@ function App() {
               {/* Parent Route */}
               <Route path="/" element={<Home />}>
                 {/* Child Routes */}
-                <Route index element={<All />} /> {/* Default Route */}
+                <Route index element={<TaskContainer />} /> {/* Default Route */}
                 <Route path="myday" element={<TaskContainer />} />
                 <Route path="all" element={<All />} />
                 <Route path="important" element={<Important />} />
