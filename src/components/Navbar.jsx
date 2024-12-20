@@ -1,8 +1,8 @@
 import React from 'react';
 import { TiThMenu } from "react-icons/ti";
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleMenu } from "../utils/appSlice";
 import Sidebar from './Sidebar';
+import { toggleMenu } from '../utils/appSlice';
 
 const Navbar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
