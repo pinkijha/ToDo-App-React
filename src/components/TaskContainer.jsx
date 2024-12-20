@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MdDelete } from "react-icons/md";
 import { MdModeEditOutline } from "react-icons/md";
 import { CiStar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa6";
-import { handleComplete, handleDelete, handleImportant } from "./HandleFunctions";
+import {
+  handleComplete,
+  handleDelete,
+  handleImportant,
+} from "../utils/HandleFunctions";
+import { useUtils } from "../utils/UtilsContext";
+import { getLocalStorageTodoData, setLocalStorageTodoData } from "./TodoLocalStorage";
 
-const TaskContainer = () => {
-  
+const TaskContainer = () => {  
+  const { task, setTask, setImportantTask, setCompletedTasks } = useUtils();
+
+// Load tasks from local storage on component mount
+useEffect(() => {
+  const savedTasks = getLocalStorageTodoData();
+  setTask(savedTasks);
+}, [setTask]);
+
+ // Save tasks to local storage whenever tasks change
+ useEffect(() => {
+  setLocalStorageTodoData(task);
+}, [task]);
 
   return (
     <div
@@ -23,12 +40,12 @@ const TaskContainer = () => {
         >
           <input
             type="radio"
-            onClick={() => handleComplete(id)}
+            onClick={() => handleComplete(id, task, setTask, setCompletedTasks)}
             disabled={completed}
           />
           <p className="cursor-pointer text-sm">{content}</p>
           <div className="absolute space-x-2 right-1 flex items-center">
-            <div onClick={() => handleImportant(id)} className="cursor-pointer">
+            <div onClick={() => handleImportant(id, task, setTask, setImportantTask)} className="cursor-pointer">
               {important ? (
                 <FaStar className="text-orange-400" />
               ) : (
@@ -37,7 +54,7 @@ const TaskContainer = () => {
             </div>
             <MdModeEditOutline className="text-blue-600 cursor-pointer" />
             <MdDelete
-              onClick={() => handleDelete(id)}
+              onClick={() => handleDelete(id, setTask)}
               className="text-red-600 cursor-pointer"
             />
           </div>

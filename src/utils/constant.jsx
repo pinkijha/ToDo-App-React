@@ -44,5 +44,7 @@ export const sidebarItem = [
     },
   ]
   
-
+export const TASK_KEY = "task";
+export const IMPORTANT_TASKS_KEY = "importantTask";
+export const COMPLETED_TASKS_KEY = "completedTasks";
   

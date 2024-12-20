@@ -1,13 +1,12 @@
 
-import { useUtils } from "../utils/UtilsContext";
 
-const { task, setTask, setImportantTask, setCompletedTasks } = useUtils();
-
-  export const handleDelete = (id) => {
+  // handling delete function
+  export const handleDelete = (id, setTask) => {
     setTask((prevTask) => prevTask.filter((t) => t.id !== id));
   };
 
-  export const handleImportant = (id) => {
+  // handling important function
+  export const handleImportant = (id, task, setTask, setImportantTask) => {
     setTask((prevTask) =>
       prevTask.map((t) => {
         if (t.id === id) {
@@ -26,7 +25,8 @@ const { task, setTask, setImportantTask, setCompletedTasks } = useUtils();
     );
   };
 
-  export const handleComplete = (id) => {
+    // handling completed function
+  export const handleComplete = (id, task, setTask, setCompletedTasks) => {
     setTask((prevTask) =>
       prevTask.map((t) => (t.id === id ? { ...t, completed: true } : t))
     );
