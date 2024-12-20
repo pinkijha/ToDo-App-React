@@ -39,3 +39,21 @@
       }
     }, 2000);
   };
+
+
+   // Handle task edit click
+  export const handleEditClick = (id, content, setEditingId, setNewContent) => {
+    setEditingId(id); // Mark this task as being edited
+    setNewContent(content); // Set the current content as the new content to edit
+  };
+
+  // Save the edited task
+  export const saveEditedTask = (editingId, newContent, setTask, setEditingId, setNewContent) => {
+    setTask((prevTasks) =>
+      prevTasks.map((t) =>
+        t.id === editingId ? { ...t, content: newContent } : t
+      )
+    );
+    setEditingId(null);  // Reset editing mode
+    setNewContent("");   // Clear the input field
+  };

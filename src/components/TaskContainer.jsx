@@ -1,29 +1,33 @@
 import React, { useEffect } from "react";
 import { MdDelete } from "react-icons/md";
-import { MdModeEditOutline } from "react-icons/md";
 import { CiStar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa6";
-import {
-  handleComplete,
-  handleDelete,
-  handleImportant,
-} from "../utils/HandleFunctions";
+import {handleComplete, handleDelete, handleImportant,} from "../utils/HandleFunctions";
 import { useUtils } from "../utils/UtilsContext";
-import { getLocalStorageTodoData, setLocalStorageTodoData } from "./TodoLocalStorage";
+import { getLocalStorageTodoData, setLocalStorageTodoData} from "./TodoLocalStorage";
+import Edit from "./Edit";
 
-const TaskContainer = () => {  
-  const { task, setTask, setImportantTask, setCompletedTasks } = useUtils();
+const TaskContainer = () => {
+  const {
+    task,
+    setTask,
+    setImportantTask,
+    setCompletedTasks,
+    editingId,
+    newContent,
+    setNewContent,
+  } = useUtils();
 
-// Load tasks from local storage on component mount
-useEffect(() => {
-  const savedTasks = getLocalStorageTodoData();
-  setTask(savedTasks);
-}, [setTask]);
+  // Load tasks from local storage on component mount
+  useEffect(() => {
+    const savedTasks = getLocalStorageTodoData();
+    setTask(savedTasks);
+  }, [setTask]);
 
- // Save tasks to local storage whenever tasks change
- useEffect(() => {
-  setLocalStorageTodoData(task);
-}, [task]);
+  // Save tasks to local storage whenever tasks change
+  useEffect(() => {
+    setLocalStorageTodoData(task);
+  }, [task]);
 
   return (
     <div
@@ -34,25 +38,40 @@ useEffect(() => {
         <div
           key={id}
           className={`relative md:text-lg text-sm flex p-2 space-x-1 bg-slate-100
-                         md:w-full rounded-md border-spacing-8 border-gray-500 ${
-                           completed ? "line-through text-gray-500" : ""
-                         }`}
+                     md:w-full rounded-md border-spacing-8 border-gray-500 ${
+                       completed ? "line-through text-gray-500" : ""
+                     }`}
         >
           <input
             type="radio"
             onClick={() => handleComplete(id, task, setTask, setCompletedTasks)}
             disabled={completed}
           />
-          <p className="cursor-pointer text-sm">{content}</p>
+          {/* Task content */}
+          {editingId === id ? (
+            <input
+              type="text"
+              value={newContent}
+              onChange={(e) => setNewContent(e.target.value)}
+              className="flex-1"
+            />
+          ) : (
+            <p className="cursor-pointer text-sm">{content}</p>
+          )}
           <div className="absolute space-x-2 right-1 flex items-center">
-            <div onClick={() => handleImportant(id, task, setTask, setImportantTask)} className="cursor-pointer">
+            <div
+              onClick={() =>
+                handleImportant(id, task, setTask, setImportantTask)
+              }
+              className="cursor-pointer"
+            >
               {important ? (
                 <FaStar className="text-orange-400" />
               ) : (
                 <CiStar className="text-orange-600" />
               )}
             </div>
-            <MdModeEditOutline className="text-blue-600 cursor-pointer" />
+            <Edit id={id} content={content} />
             <MdDelete
               onClick={() => handleDelete(id, setTask)}
               className="text-red-600 cursor-pointer"

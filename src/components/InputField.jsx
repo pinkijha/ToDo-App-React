@@ -18,7 +18,7 @@ const InputField = () => {
       id: Date.now(), // Unique ID based on timestamp
       content: inputValue, // Content from the input field
       important: false, // Initially, the task is not imp
-      completed: false, // Initially, the task is not completed
+     
     };
 
     if (!inputValue) return alert("Task cannot be empty!"); //nul input value
